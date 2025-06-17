@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한자 플래시카드</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>한자 플래시카드</h1>
+
+        <div class="file-selection-section">
+            <h2>학습할 한자 세트 선택</h2>
+            <div class="preset-file-select">
+                <label for="preset-hanja-select">미리 준비된 세트:</label>
+                <select id="preset-hanja-select">
+                    <option value="">-- 세트를 선택하세요 --</option>
+                    <option value="data/hanja_set1-5_850char.csv">한자 세트 1 (850자) </option>
+                    <option value="data/hanja_set6-10_938char.csv">한자 세트 2 (938자) </option>
+                    <option value="data/hanja_set11-15_809char.csv">한자 세트 3 (809자) </option>
+                    <option value="data/hanja_set16-20_705char.csv">한자 세트 4 (705자) </option>
+                    </select>
+                <button id="load-preset-btn" disabled>선택한 세트 불러오기</button>
+            </div>
+
+            <p class="separator">-- 또는 --</p>
+
+            <div class="custom-file-upload">
+                <input type="file" id="hanja-file-input" accept=".csv">
+                <label for="hanja-file-input" class="file-upload-label">
+                    <span id="file-name-display">내 CSV 파일 업로드</span>
+                </label>
+                <p class="file-info">(* 1열:한자, 2열:뜻, 3열:음 형식의 CSV 파일)</p>
+                <button id="load-custom-file-btn" disabled>업로드한 파일 불러오기</button>
+            </div>
+            <p id="file-error-message" class="error-message" style="display: none;"></p>
+        </div>
+
+        <div id="flashcard-area" style="display: none;">
+            <div class="flashcard">
+                <div id="card-content"></div>
+            </div>
+            <div class="buttons">
+                <button id="known-btn">알아요</button>
+                <button id="unknown-btn">몰라요</button>
+                <button id="download-remaining-btn">남은 단어 다운로드</button>
+            </div>
+            <div class="status-bar">
+                남은 한자: <span id="remaining-count"></span>
+            </div>
+        </div>
+        <div id="no-cards-message" style="display: none;">
+            모든 한자를 학습하셨습니다!
+            <button id="reset-btn">다시 시작하기</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
