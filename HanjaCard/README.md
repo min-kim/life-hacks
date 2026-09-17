@@ -2,9 +2,13 @@
 
 한자 학습을 효율적으로 지원하기 위해 JavaScript, HTML5, CSS3 기반으로 구축된 린(Lean) 웹 애플리케이션입니다. 미리 준비된 데이터 세트 선택 및 커스텀 CSV 파일 업로드 기능, 자동 타이머 전환, localStorage 기반의 학습 상태 복원, 그리고 미습득 단어 CSV 추출 기능을 지원합니다. 
 
+**본 서비스를 직접 활용하여 2025년 7월 상공회의소 한자 2급 자격증을 취득하며 도구의 실용성을 검증하였습니다.**
+
 *한자에 최적화되어 있으나, 기존 일반 플래시카드로 다루기 까다로웠던 다국어 어휘(일본어 칸지, 성조가 포함된 성어)나 3가지 요소(표기-의미-발음) 결합이 필요한 전문 용어 학습에도 유연하게 활용할 수 있습니다.*
 
 A lightweight, browser-based flashcard application designed for efficient learning of Chinese characters (Hanja). Built with plain JavaScript, HTML5, and CSS3, it offers features such as preset dataset selection, custom CSV file uploads, automatic timer switching, state restoration via localStorage, and exporting unmastered vocabulary. 
+
+**By actively utilizing this application, the author successfully obtained the Level 2 Commerce Hanja Certification in July 2025, proving its practical effectiveness.**
 
 *While optimized for Hanja, it can also be seamlessly adapted for complex language vocabulary (such as Japanese Kanji or tonal phrases) and specialized terminology requiring multi-attribute mapping.*
 
