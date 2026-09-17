@@ -1,0 +1,15 @@
+# Base & Machine Learning Frameworks
+torch>=2.0.0
+
+# arXiv API Integration
+arxiv>=2.0.0
+
+# Vector Embeddings & Similarity Search
+sentence-transformers>=2.2.2
+scikit-learn>=1.2.0
+
+# Summarization Engine (Hugging Face)
+transformers>=4.30.0
+
+# Notebook & UI Utilities
+ipython>=8.0.0

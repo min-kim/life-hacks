@@ -93,7 +93,7 @@ def is_target_region(address: str, target_regions: list) -> bool:
     return False
 
 
-DB_FILE = "colab_auction_vault.db"
+DB_FILE = "nest_auction_vault.db"
 building_api = pdr.BuildingLedger(PUBLIC_DATA_SERVICE_KEY)
 
 # ==========================================
