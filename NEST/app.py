@@ -98,6 +98,9 @@ def load_db_processed_auctions():
 # SIDEBAR CONTROL PANEL
 # ==========================================
 st.sidebar.title("🏠 NEST Control Panel")
+st.sidebar.info(
+    "💡 포트폴리오 시연용 앱입니다. 파이프라인 실행 결과 알림이 관리자 텔레그램으로 전송되므로 1회 실행 후 테스트 결과를 확인해 주세요."
+)
 st.sidebar.markdown("---")
 
 st.sidebar.subheader("1. 데이터 수집 설정")
