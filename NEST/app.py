@@ -5,7 +5,6 @@ import plotly.express as px
 import pydeck as pdk
 import streamlit as st
 from dotenv import load_dotenv
-import streamlit.components.v1 as components
 
 # 기존 로직 모듈 임포트 (기존 파이썬 코드의 주요 함수들)
 from NEST_pipeline import (
@@ -35,50 +34,44 @@ st.set_page_config(
 init_db()
 
 # ==========================================
-# TARGETED GREEN ACCENT INJECTION (Preserve All Other Styles)
+# PURE CSS OVERRIDE (Sandbox-Safe Green Accent)
 # ==========================================
-components.html(
+st.markdown(
     """
-    <script>
-    const parentDoc = window.parent.document;
-    
-    function applyGreenAccent() {
-        // 기존 테마 및 배경 CSS는 건드리지 않고, Primary 변수 및 선택 요소만 초록색으로 지정
-        let customStyle = parentDoc.getElementById('custom-green-accent');
-        if (!customStyle) {
-            customStyle = parentDoc.createElement('style');
-            customStyle.id = 'custom-green-accent';
-            parentDoc.head.appendChild(customStyle);
-        }
-        
-        customStyle.innerHTML = `
-            :root {
-                --primary-color: #2E7D32 !important;
-            }
-            /* Radio 버튼 선택 지점 */
-            div[data-testid="stRadio"] div[role="radiogroup"] div[aria-checked="true"] {
-                background-color: #2E7D32 !important;
-                border-color: #2E7D32 !important;
-            }
-            /* Checkbox 선택 지점 */
-            div[data-testid="stCheckbox"] label div[aria-checked="true"] {
-                background-color: #2E7D32 !important;
-                border-color: #2E7D32 !important;
-            }
-            /* Select / Multi-select 태그 칩 */
-            div[data-baseweb="select"] div[aria-selected="true"],
-            span[data-baseweb="tag"] {
-                background-color: #2E7D32 !important;
-            }
-        `;
+    <style>
+    /* 1. 최상위 루트 및 앱 컨테이너의 Primary Color 강제 */
+    :root, 
+    div[data-testid="stAppViewContainer"], 
+    div[data-testid="stHeader"] {
+        --primary-color: #2E7D32 !important;
     }
 
-    // DOM 렌더링 시점에 맞춰 주기적 실행 (Streamlit Cloud의 덮어쓰기 방지)
-    applyGreenAccent();
-    setInterval(applyGreenAccent, 500);
-    </script>
+    /* 2. Radio (라디오 버튼) 외곽선 및 내부 체크 지점 강제 */
+    html body div[data-testid="stAppViewContainer"] div[data-testid="stRadio"] label div:first-child {
+        border-color: #2E7D32 !important;
+    }
+    html body div[data-testid="stAppViewContainer"] div[data-testid="stRadio"] div[role="radiogroup"] div[aria-checked="true"] {
+        background-color: #2E7D32 !important;
+        border-color: #2E7D32 !important;
+    }
+    html body div[data-testid="stAppViewContainer"] div[data-testid="stRadio"] div[role="radiogroup"] div[aria-checked="true"] * {
+        background-color: #2E7D32 !important;
+    }
+
+    /* 3. Checkbox (체크박스) 선택 지점 강제 */
+    html body div[data-testid="stAppViewContainer"] div[data-testid="stCheckbox"] label div[aria-checked="true"] {
+        background-color: #2E7D32 !important;
+        border-color: #2E7D32 !important;
+    }
+
+    /* 4. Selectbox / Multi-select 선택 항목 태그 칩 */
+    html body div[data-testid="stAppViewContainer"] div[data-baseweb="select"] div[aria-selected="true"],
+    html body div[data-testid="stAppViewContainer"] span[data-baseweb="tag"] {
+        background-color: #2E7D32 !important;
+    }
+    </style>
     """,
-    height=0,
+    unsafe_allow_html=True,
 )
 
 
