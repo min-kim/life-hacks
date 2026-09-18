@@ -5,6 +5,7 @@ import plotly.express as px
 import pydeck as pdk
 import streamlit as st
 from dotenv import load_dotenv
+import streamlit.components.v1 as components
 
 # 기존 로직 모듈 임포트 (기존 파이썬 코드의 주요 함수들)
 from NEST_pipeline import (
@@ -34,46 +35,50 @@ st.set_page_config(
 init_db()
 
 # ==========================================
-# CUSTOM CSS (Streamlit Cloud Override Version)
+# TARGETED GREEN ACCENT INJECTION (Preserve All Other Styles)
 # ==========================================
-st.markdown(
+components.html(
     """
-    <style>
-    /* 1. Streamlit 앱 전체 테마 변수 강제 주입 */
-    html, body, [data-testid="stAppViewContainer"], [data-testid="stHeader"] {
-        --primary-color: #2E7D32 !important;
+    <script>
+    const parentDoc = window.parent.document;
+    
+    function applyGreenAccent() {
+        // 기존 테마 및 배경 CSS는 건드리지 않고, Primary 변수 및 선택 요소만 초록색으로 지정
+        let customStyle = parentDoc.getElementById('custom-green-accent');
+        if (!customStyle) {
+            customStyle = parentDoc.createElement('style');
+            customStyle.id = 'custom-green-accent';
+            parentDoc.head.appendChild(customStyle);
+        }
+        
+        customStyle.innerHTML = `
+            :root {
+                --primary-color: #2E7D32 !important;
+            }
+            /* Radio 버튼 선택 지점 */
+            div[data-testid="stRadio"] div[role="radiogroup"] div[aria-checked="true"] {
+                background-color: #2E7D32 !important;
+                border-color: #2E7D32 !important;
+            }
+            /* Checkbox 선택 지점 */
+            div[data-testid="stCheckbox"] label div[aria-checked="true"] {
+                background-color: #2E7D32 !important;
+                border-color: #2E7D32 !important;
+            }
+            /* Select / Multi-select 태그 칩 */
+            div[data-baseweb="select"] div[aria-selected="true"],
+            span[data-baseweb="tag"] {
+                background-color: #2E7D32 !important;
+            }
+        `;
     }
 
-    /* 2. Radio (라디오 버튼) 초록색 강제 */
-    div[data-testid="stRadio"] label span[role="radio"][aria-checked="true"] {
-        background-color: #2E7D32 !important;
-        border-color: #2E7D32 !important;
-    }
-    div[data-testid="stRadio"] div[role="radiogroup"] div[aria-checked="true"] {
-        background-color: #2E7D32 !important;
-        border-color: #2E7D32 !important;
-    }
-    div[data-testid="stRadio"] label div:first-child {
-        border-color: #2E7D32 !important;
-    }
-
-    /* 3. Checkbox (체크박스) 초록색 강제 */
-    div[data-testid="stCheckbox"] label div[aria-checked="true"] {
-        background-color: #2E7D32 !important;
-        border-color: #2E7D32 !important;
-    }
-
-    /* 4. Selectbox / Multi-select 태그 및 포커스 */
-    div[data-baseweb="select"] div[aria-selected="true"],
-    span[data-baseweb="tag"] {
-        background-color: #2E7D32 !important;
-    }
-    div[data-baseweb="select"] > div:focus-within {
-        border-color: #2E7D32 !important;
-    }
-    </style>
+    // DOM 렌더링 시점에 맞춰 주기적 실행 (Streamlit Cloud의 덮어쓰기 방지)
+    applyGreenAccent();
+    setInterval(applyGreenAccent, 500);
+    </script>
     """,
-    unsafe_allow_html=True,
+    height=0,
 )
 
 
