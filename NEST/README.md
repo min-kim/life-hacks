@@ -4,7 +4,7 @@
 > **개인의 취향을 담은 삶의 터전을 찾는 정량적 경매 매물 분석 시스템**  
 > **A personalized court auction analytics engine tailored for unique living styles and optimal environment search.**
 
-
+🌐 **Live Demo Application**: [https://nest-auction.streamlit.app](https://nest-auction.streamlit.app)
 ---
 
 
@@ -136,11 +136,14 @@ streamlit run app.py
 ```
 ---
 ## ☁️ Deployment Guide
+
+* 🚀 **Deployed URL**: [https://nest-auction.streamlit.app](https://nest-auction.streamlit.app)
+* ⚙️ **Hosting Platform**: Streamlit Community Cloud
+
 1. 본 Repository를 GitHub에 Push합니다. 
+2. Streamlit Community Cloud에 접속하여 저장소와 `app.py`를 연결합니다.
+3. 앱 설정의 Secrets 항목에 `.streamlit/secrets.toml`에 포함된 API 키 정보를 등록하고 Deploy를 완료합니다.
 
-2. Streamlit Community Cloud에 접속하여 저장소와 app.py를 연결합니다.
-
-3. 앱 설정의 Secrets 항목에 .streamlit/secrets.toml에 포함된 API 키 정보를 등록하고 Deploy를 완료합니다.
 ---
 ## 📜 License & Terms of Use / 라이선스 및 이용 조건
 

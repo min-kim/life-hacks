@@ -9,10 +9,9 @@
 
 | Project / 프로젝트 | Description / 개요 | Tech Stack / 기술 스택 | Link / 링크 |
 | :--- | :--- | :--- | :---: |
-| **NEST** | 서울 경매 매물 분석 대시보드 / Auction Data Pipeline & Dashboard | Streamlit, Plotly, Pydeck, SQLite | [View](./NEST/README.md) |
-| **ResearchMate** | 최신 학술 논문 수집 및 요약 / Automated Paper Summarizer | Python, LLM API | [View](./ResearchMate/README.md) |
-| **HanjaCard** | 맞춤형 한자 학습 플래시카드 / Hanja Flashcard Web Application | JavaScript, HTML/CSS, Netlify | [View](./HanjaCard/README.md) |
-
+| **NEST** | 서울 경매 매물 분석 대시보드 / Auction Data Pipeline & Dashboard | Streamlit, Plotly, Pydeck, SQLite | [Demo](https://nest-auction.streamlit.app) / [Docs](./NEST/README.md) |
+| **ResearchMate** | 최신 학술 논문 수집 및 요약 / Automated Paper Summarizer | Python, LLM API | [Docs](./ResearchMate/README.md) |
+| **HanjaCard** | 맞춤형 한자 학습 플래시카드 / Hanja Flashcard Web Application | JavaScript, HTML/CSS, Netlify | [Demo](https://hanjacard.netlify.app/) / [Docs](./HanjaCard/README.md) |
 
 ---
 
@@ -22,9 +21,11 @@
 - **KR**: 서울 관할 법원별 부동산 경매 데이터를 자동 수집·수정·평가하여 조건별 필터링 및 지도 기반 시각화를 제공하는 웹 앱입니다.
   - 공공 API 및 Pydeck 기반 실시간 지도 시각화
   - SQLite3 연동 매물 이력 관리 및 텔레그램 API 알림 파이프라인
+  - 🌐 **Live Demo**: [nest-auction.streamlit.app](https://nest-auction.streamlit.app)
 - **EN**: An automated real estate auction analysis pipeline and interactive spatial dashboard for Seoul court properties.
   - Real-time map visualization using Public Data API & Pydeck
   - Property history tracking with SQLite3 & automated Telegram alerts
+  - 🌐 **Live Demo**: [nest-auction.streamlit.app](https://nest-auction.streamlit.app)
 - 🔗 **Detailed Docs**: [NEST README](./NEST/README.md)
 
 ---
