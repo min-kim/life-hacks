@@ -34,40 +34,43 @@ st.set_page_config(
 init_db()
 
 # ==========================================
-# CUSTOM CSS (Targeted Green Accent for Streamlit Cloud)
+# CUSTOM CSS (Streamlit Cloud Scoped Green Accent)
 # ==========================================
 st.markdown(
     """
     <style>
-    /* 1. Radio 버튼 체크 상태 (외곽선 및 핵심 포인트) */
-    div[role="radiogroup"] label[data-baseweb="radio"] input:checked + div {
+    /* 1. Streamlit 전역 Primary Color 변수 재정의 (기존 다크모드/배경 유지) */
+    :root {
+        --primary-color: #2E7D32 !important;
+    }
+
+    /* 2. Radio 버튼 선택 지점 및 외곽선 (Red -> Green) */
+    div[data-testid="stRadio"] div[role="radiogroup"] label div:first-child {
         border-color: #2E7D32 !important;
+    }
+    div[data-testid="stRadio"] div[role="radiogroup"] label div[aria-checked="true"] {
+        background-color: #2E7D32 !important;
+        border-color: #2E7D32 !important;
+    }
+    div[data-testid="stRadio"] div[role="radiogroup"] label div[aria-checked="true"] > div {
         background-color: #2E7D32 !important;
     }
-    div[role="radiogroup"] label[data-baseweb="radio"] div[aria-checked="true"] {
+
+    /* 3. Checkbox 선택 시 배경색 */
+    div[data-testid="stCheckbox"] label div[aria-checked="true"] {
         background-color: #2E7D32 !important;
         border-color: #2E7D32 !important;
     }
 
-    /* 2. Checkbox 체크 상태 */
-    div[data-baseweb="checkbox"] input:checked + div {
+    /* 4. Selectbox / Multi-select 포커스 및 선택 태그 */
+    div[data-baseweb="select"] div[aria-selected="true"] {
         background-color: #2E7D32 !important;
-        border-color: #2E7D32 !important;
     }
-
-    /* 3. Selectbox(드롭다운) 포커스 테두리 */
     div[data-baseweb="select"] > div:focus-within {
         border-color: #2E7D32 !important;
     }
-
-    /* 4. Multi-select 선택된 항목 칩(Tag) */
     span[data-baseweb="tag"] {
         background-color: #2E7D32 !important;
-    }
-
-    /* 5. Streamlit 내부 전역 Accent 변수만 선택적으로 덮어쓰기 (기존 다른 디자인 유지) */
-    div[data-testid="stAppViewContainer"] {
-        --primary-color: #2E7D32 !important;
     }
     </style>
     """,
