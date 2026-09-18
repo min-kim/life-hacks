@@ -34,43 +34,44 @@ st.set_page_config(
 init_db()
 
 # ==========================================
-# PURE CSS OVERRIDE (Sandbox-Safe Green Accent)
+# CUSTOM CSS (다크모드 유지 + Red 라디오/선택 요소를 Green으로 교체)
 # ==========================================
 st.markdown(
     """
-    <style>
-    /* 1. 최상위 루트 및 앱 컨테이너의 Primary Color 강제 */
-    :root, 
-    div[data-testid="stAppViewContainer"], 
-    div[data-testid="stHeader"] {
-        --primary-color: #2E7D32 !important;
-    }
+   <style>
+   /* 1. Radio 버튼의 동그라미 선택 포인트 (Red -> Green) */
+   div[data-baseweb="radio"] div[role="radio"][aria-checked="true"] > div:first-child {
+       background-color: #2E7D32 !important;
+       border-color: #2E7D32 !important;
+   }
 
-    /* 2. Radio (라디오 버튼) 외곽선 및 내부 체크 지점 강제 */
-    html body div[data-testid="stAppViewContainer"] div[data-testid="stRadio"] label div:first-child {
-        border-color: #2E7D32 !important;
-    }
-    html body div[data-testid="stAppViewContainer"] div[data-testid="stRadio"] div[role="radiogroup"] div[aria-checked="true"] {
-        background-color: #2E7D32 !important;
-        border-color: #2E7D32 !important;
-    }
-    html body div[data-testid="stAppViewContainer"] div[data-testid="stRadio"] div[role="radiogroup"] div[aria-checked="true"] * {
-        background-color: #2E7D32 !important;
-    }
 
-    /* 3. Checkbox (체크박스) 선택 지점 강제 */
-    html body div[data-testid="stAppViewContainer"] div[data-testid="stCheckbox"] label div[aria-checked="true"] {
-        background-color: #2E7D32 !important;
-        border-color: #2E7D32 !important;
-    }
+   /* 2. Radio 버튼 선택 링 테두리 및 라벨 강조색 */
+   div[data-baseweb="radio"] input:checked + div {
+       border-color: #2E7D32 !important;
+   }
+  
+   /* 3. Checkbox 선택 시 배경색 */
+   div[data-baseweb="checkbox"] input:checked + div {
+       background-color: #2E7D32 !important;
+       border-color: #2E7D32 !important;
+   }
 
-    /* 4. Selectbox / Multi-select 선택 항목 태그 칩 */
-    html body div[data-testid="stAppViewContainer"] div[data-baseweb="select"] div[aria-selected="true"],
-    html body div[data-testid="stAppViewContainer"] span[data-baseweb="tag"] {
-        background-color: #2E7D32 !important;
-    }
-    </style>
-    """,
+
+   /* 4. Selectbox(드롭다운) 선택/포커스 시 테두리 색상 */
+   div[data-baseweb="select"] > div {
+       border-color: transparent !important;
+   }
+   div[data-baseweb="select"] > div:focus-within {
+       border-color: #2E7D32 !important;
+   }
+  
+   /* 5. 멀티선택 태그(Tag) 배경색 (선택된 항목 칩) */
+   span[data-baseweb="tag"] {
+       background-color: #2E7D32 !important;
+   }
+   </style>
+   """,
     unsafe_allow_html=True,
 )
 
