@@ -34,39 +34,40 @@ st.set_page_config(
 init_db()
 
 # ==========================================
-# CUSTOM CSS (다크모드 유지 + Red 라디오/선택 요소를 Green으로 교체)
+# CUSTOM CSS (Targeted Green Accent for Streamlit Cloud)
 # ==========================================
 st.markdown(
     """
     <style>
-    /* 1. Radio 버튼의 동그라미 선택 포인트 (Red -> Green) */
-    div[data-baseweb="radio"] div[role="radio"][aria-checked="true"] > div:first-child {
+    /* 1. Radio 버튼 체크 상태 (외곽선 및 핵심 포인트) */
+    div[role="radiogroup"] label[data-baseweb="radio"] input:checked + div {
+        border-color: #2E7D32 !important;
+        background-color: #2E7D32 !important;
+    }
+    div[role="radiogroup"] label[data-baseweb="radio"] div[aria-checked="true"] {
         background-color: #2E7D32 !important;
         border-color: #2E7D32 !important;
     }
 
-    /* 2. Radio 버튼 선택 링 테두리 및 라벨 강조색 */
-    div[data-baseweb="radio"] input:checked + div {
-        border-color: #2E7D32 !important;
-    }
-    
-    /* 3. Checkbox 선택 시 배경색 */
+    /* 2. Checkbox 체크 상태 */
     div[data-baseweb="checkbox"] input:checked + div {
         background-color: #2E7D32 !important;
         border-color: #2E7D32 !important;
     }
 
-    /* 4. Selectbox(드롭다운) 선택/포커스 시 테두리 색상 */
-    div[data-baseweb="select"] > div {
-        border-color: transparent !important;
-    }
+    /* 3. Selectbox(드롭다운) 포커스 테두리 */
     div[data-baseweb="select"] > div:focus-within {
         border-color: #2E7D32 !important;
     }
-    
-    /* 5. 멀티선택 태그(Tag) 배경색 (선택된 항목 칩) */
+
+    /* 4. Multi-select 선택된 항목 칩(Tag) */
     span[data-baseweb="tag"] {
         background-color: #2E7D32 !important;
+    }
+
+    /* 5. Streamlit 내부 전역 Accent 변수만 선택적으로 덮어쓰기 (기존 다른 디자인 유지) */
+    div[data-testid="stAppViewContainer"] {
+        --primary-color: #2E7D32 !important;
     }
     </style>
     """,
