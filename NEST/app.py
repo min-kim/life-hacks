@@ -34,43 +34,42 @@ st.set_page_config(
 init_db()
 
 # ==========================================
-# CUSTOM CSS (Streamlit Cloud Scoped Green Accent)
+# CUSTOM CSS (Streamlit Cloud Override Version)
 # ==========================================
 st.markdown(
     """
     <style>
-    /* 1. Streamlit 전역 Primary Color 변수 재정의 (기존 다크모드/배경 유지) */
-    :root {
+    /* 1. Streamlit 앱 전체 테마 변수 강제 주입 */
+    html, body, [data-testid="stAppViewContainer"], [data-testid="stHeader"] {
         --primary-color: #2E7D32 !important;
     }
 
-    /* 2. Radio 버튼 선택 지점 및 외곽선 (Red -> Green) */
-    div[data-testid="stRadio"] div[role="radiogroup"] label div:first-child {
-        border-color: #2E7D32 !important;
-    }
-    div[data-testid="stRadio"] div[role="radiogroup"] label div[aria-checked="true"] {
+    /* 2. Radio (라디오 버튼) 초록색 강제 */
+    div[data-testid="stRadio"] label span[role="radio"][aria-checked="true"] {
         background-color: #2E7D32 !important;
         border-color: #2E7D32 !important;
     }
-    div[data-testid="stRadio"] div[role="radiogroup"] label div[aria-checked="true"] > div {
+    div[data-testid="stRadio"] div[role="radiogroup"] div[aria-checked="true"] {
         background-color: #2E7D32 !important;
+        border-color: #2E7D32 !important;
+    }
+    div[data-testid="stRadio"] label div:first-child {
+        border-color: #2E7D32 !important;
     }
 
-    /* 3. Checkbox 선택 시 배경색 */
+    /* 3. Checkbox (체크박스) 초록색 강제 */
     div[data-testid="stCheckbox"] label div[aria-checked="true"] {
         background-color: #2E7D32 !important;
         border-color: #2E7D32 !important;
     }
 
-    /* 4. Selectbox / Multi-select 포커스 및 선택 태그 */
-    div[data-baseweb="select"] div[aria-selected="true"] {
+    /* 4. Selectbox / Multi-select 태그 및 포커스 */
+    div[data-baseweb="select"] div[aria-selected="true"],
+    span[data-baseweb="tag"] {
         background-color: #2E7D32 !important;
     }
     div[data-baseweb="select"] > div:focus-within {
         border-color: #2E7D32 !important;
-    }
-    span[data-baseweb="tag"] {
-        background-color: #2E7D32 !important;
     }
     </style>
     """,
